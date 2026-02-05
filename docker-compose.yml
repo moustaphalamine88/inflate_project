@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+      - EXTERNAL_API_URL=http://mock-external-api:9000
+    depends_on:
+      - mongodb
+      - mock-external-api
+
+
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  mock-external-api:
+    build:
+      context: ./mock_external_api
+    ports:
+      - "9000:9000"
+
+volumes:
+  mongodb_data:

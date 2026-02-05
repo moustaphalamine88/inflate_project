@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(pandoc:*)",
+      "Bash(pip3 list:*)",
+      "Bash(npx md-to-pdf:*)"
+    ]
+  }
+}
